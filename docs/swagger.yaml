@@ -1,0 +1,965 @@
+definitions:
+  github_com_quydmfl_niveau-test_api_v1.CreateCategoryRequest:
+    properties:
+      name:
+        example: Crunchy Munch
+        maxLength: 100
+        minLength: 3
+        type: string
+      status:
+        enum:
+        - active
+        - deactive
+        example: active
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.CreateProductRequest:
+    properties:
+      category_id:
+        example: 67389c69-2e78-413a-9d77-6b749520b127
+        type: string
+      price:
+        example: 150000
+        type: number
+      product_name:
+        example: Crunchy Munch
+        maxLength: 100
+        minLength: 3
+        type: string
+      quantity:
+        example: 10
+        type: integer
+      reference:
+        example: PROD-202401-001
+        type: string
+      status:
+        enum:
+        - Available
+        - Out of Stock
+        - On Order
+        example: Available
+        type: string
+      stock_location:
+        example: Brookstone
+        type: string
+      supplier_id:
+        example: 66ae8b26-a0cd-40d5-8b2d-5127d7b9d817
+        type: string
+    required:
+    - category_id
+    - price
+    - product_name
+    - quantity
+    - status
+    - stock_location
+    - supplier_id
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.CreateSupplierRequest:
+    properties:
+      name:
+        example: Crunchy Munch
+        maxLength: 100
+        minLength: 3
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.GetCategoryDetailData:
+    properties:
+      created_at:
+        example: "2023-01-01"
+        type: string
+      id:
+        example: 67389c69-2e78-413a-9d77-6b749520b127
+        type: string
+      name:
+        example: Food
+        type: string
+      status:
+        example: active
+        type: string
+      updated_at:
+        example: "2023-01-01"
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.GetCategoryDetailResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.GetCategoryDetailData'
+      message:
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.GetProductDetailData:
+    properties:
+      added_date:
+        example: "2024-01-28"
+        type: string
+      category:
+        example: Food
+        type: string
+      price:
+        example: 150000
+        type: number
+      product_name:
+        example: Crunchy Munch
+        type: string
+      quantity:
+        example: 10
+        type: integer
+      reference:
+        example: PROD-202401-001
+        type: string
+      status:
+        example: Available
+        type: string
+      stock_location:
+        example: Cedar Valley
+        type: string
+      supplier:
+        example: KFC
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.GetProfileResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.GetProfileResponseData'
+      message:
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.GetProfileResponseData:
+    properties:
+      nickname:
+        example: alan
+        type: string
+      userId:
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.GetSupplierDetailData:
+    properties:
+      id:
+        example: 67389c69-2e78-413a-9d77-6b749520b127
+        type: string
+      name:
+        example: Food
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.GetSupplierDetailResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.GetSupplierDetailData'
+      message:
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.LoginRequest:
+    properties:
+      email:
+        example: 1234@gmail.com
+        type: string
+      password:
+        example: "123456"
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.LoginResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.LoginResponseData'
+      message:
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.LoginResponseData:
+    properties:
+      accessToken:
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.ProductCategoryStatsResponse:
+    properties:
+      category_id:
+        type: string
+      category_name:
+        type: string
+      percentage:
+        type: number
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.ProductSupplierStatsResponse:
+    properties:
+      percentage:
+        type: number
+      supplier_id:
+        type: string
+      supplier_name:
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.RegisterRequest:
+    properties:
+      email:
+        example: 1234@gmail.com
+        type: string
+      password:
+        example: "123456"
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.SearchCategoryResponse:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+      page:
+        example: 1
+        minimum: 1
+        type: integer
+      size:
+        example: 10
+        maximum: 100
+        minimum: 10
+        type: integer
+      total_pages:
+        example: 10
+        type: integer
+      total_rows:
+        example: 100
+        type: integer
+    required:
+    - page
+    - size
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.SearchProductResponse:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+      page:
+        example: 1
+        minimum: 1
+        type: integer
+      size:
+        example: 10
+        maximum: 100
+        minimum: 10
+        type: integer
+      total_pages:
+        example: 10
+        type: integer
+      total_rows:
+        example: 100
+        type: integer
+    required:
+    - page
+    - size
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.SearchSupplierResponse:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+      page:
+        example: 1
+        minimum: 1
+        type: integer
+      size:
+        example: 10
+        maximum: 100
+        minimum: 10
+        type: integer
+      total_pages:
+        example: 10
+        type: integer
+      total_rows:
+        example: 100
+        type: integer
+    required:
+    - page
+    - size
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.UpdateProductRequest:
+    properties:
+      added_date:
+        example: "2024-01-28"
+        type: string
+      category_id:
+        example: 67389c69-2e78-413a-9d77-6b749520b127
+        type: string
+      price:
+        example: 150000
+        type: number
+      product_name:
+        example: Crunchy Munch
+        maxLength: 100
+        minLength: 3
+        type: string
+      quantity:
+        example: 10
+        type: integer
+      status:
+        enum:
+        - Available
+        - Out of Stock
+        - On Order
+        example: Available
+        type: string
+      stock_location:
+        example: Brookstone
+        type: string
+      supplier_id:
+        example: 66ae8b26-a0cd-40d5-8b2d-5127d7b9d817
+        type: string
+    required:
+    - added_date
+    - category_id
+    - price
+    - product_name
+    - quantity
+    - status
+    - stock_location
+    - supplier_id
+    type: object
+  github_com_quydmfl_niveau-test_api_v1.UpdateProfileRequest:
+    properties:
+      email:
+        example: 1234@gmail.com
+        type: string
+      nickname:
+        example: alan
+        type: string
+    required:
+    - email
+    type: object
+host: localhost:8000
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is api document.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Niveau API
+  version: 1.0.0
+paths:
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.LoginResponse'
+      summary: Account Login
+      tags:
+      - Auth Modules
+  /auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Currently only supports email login
+      parameters:
+      - description: params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.RegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.Response'
+      summary: User Registration
+      tags:
+      - Auth Modules
+  /categories:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a paginated list of categories with optional search and
+        sorting criteria.
+      parameters:
+      - description: Filter by category name
+        in: query
+        name: name
+        type: string
+      - description: Filter by Status
+        enum:
+        - active
+        - deactive
+        example: '"active"'
+        in: query
+        name: status
+        type: string
+      - default: created_at
+        description: Sort by field
+        enum:
+        - name
+        - created_at
+        example: '"name"'
+        in: query
+        name: sort_by
+        type: string
+      - default: desc
+        description: Sort order
+        enum:
+        - asc
+        - desc
+        example: '"asc"'
+        in: query
+        name: sort_order
+        type: string
+      - default: 1
+        description: Page number (must be >= 1)
+        example: 1
+        in: query
+        name: page
+        required: true
+        type: integer
+      - default: 20
+        description: Items per page (between 10-100)
+        example: 10
+        in: query
+        name: size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response with a list of categories
+          schema:
+            items:
+              $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.SearchCategoryResponse'
+            type: array
+      security:
+      - Bearer: []
+      summary: Get list of categories
+      tags:
+      - Categories Modules
+    post:
+      consumes:
+      - application/json
+      description: Create a new category with the given details
+      parameters:
+      - description: Category creation request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.CreateCategoryRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Category created successfully
+          schema:
+            $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.Response'
+      security:
+      - Bearer: []
+      summary: Create a new category
+      tags:
+      - Categories Modules
+  /categories/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve detailed information about a category by its ID.
+      parameters:
+      - description: Category ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response
+          schema:
+            $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.GetCategoryDetailResponse'
+      security:
+      - Bearer: []
+      summary: Get category details
+      tags:
+      - Categories Modules
+  /products:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of products with optional filters, sorting, and
+        pagination
+      parameters:
+      - description: Filter by Product Reference
+        example: '"PROD-202401-001"'
+        in: query
+        name: reference
+        type: string
+      - description: Filter by Product Name (3-100 chars)
+        example: '"Crunchy Munch"'
+        in: query
+        name: product_name
+        type: string
+      - description: Filter by Category ID (must be > 0)
+        example: "1"
+        in: query
+        name: category_id
+        type: string
+      - description: Filter by Supplier ID (must be > 0)
+        example: "1"
+        in: query
+        name: supplier_id
+        type: string
+      - description: Filter by Stock Location ID (must be > 0)
+        example: "1"
+        in: query
+        name: stock_location_id
+        type: string
+      - description: Filter by Minimum Price (must be > 0)
+        example: 100000
+        in: query
+        name: min_price
+        type: number
+      - description: Filter by Maximum Price (must be > 0)
+        example: 500000
+        in: query
+        name: max_price
+        type: number
+      - description: Filter by start date (YYYY-MM-DD)
+        example: '"2024-01-28"'
+        format: date
+        in: query
+        name: date_added_from
+        type: string
+      - description: Filter by end date (YYYY-MM-DD)
+        example: '"2024-01-28"'
+        format: date
+        in: query
+        name: date_added_to
+        type: string
+      - description: Filter by Product Status
+        enum:
+        - Available
+        - Out of Stock
+        - On Order
+        example: '"Available"'
+        in: query
+        name: status
+        type: string
+      - default: added_date
+        description: Sort by field
+        enum:
+        - price
+        - name
+        - added_date
+        example: '"price"'
+        in: query
+        name: sort_by
+        type: string
+      - default: desc
+        description: Sort order
+        enum:
+        - asc
+        - desc
+        example: '"asc"'
+        in: query
+        name: sort_order
+        type: string
+      - default: 1
+        description: Page number (must be >= 1)
+        example: 1
+        in: query
+        name: page
+        required: true
+        type: integer
+      - default: 20
+        description: Items per page (between 10-100)
+        example: 10
+        in: query
+        name: size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.SearchProductResponse'
+      security:
+      - Bearer: []
+      summary: Search and filter products
+      tags:
+      - Product Modules
+    post:
+      consumes:
+      - application/json
+      description: Create a new product with the given details
+      parameters:
+      - description: Product creation request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.CreateProductRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Product created successfully
+          schema:
+            $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.Response'
+      security:
+      - Bearer: []
+      summary: Create a new product
+      tags:
+      - Product Modules
+  /products/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Permanently deletes a product using the provided product reference
+        (ID) in the URL
+      parameters:
+      - description: Product Reference ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Product deleted successfully
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - Bearer: []
+      summary: Delete a product by ID
+      tags:
+      - Product Modules
+    get:
+      consumes:
+      - application/json
+      description: Retrieve detailed product information by ID
+      parameters:
+      - description: Product Reference ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.GetProductDetailData'
+      security:
+      - Bearer: []
+      summary: Get product detail information
+      tags:
+      - Product Modules
+    put:
+      consumes:
+      - application/json
+      description: Update product details using the product reference (ID) provided
+        in the URL
+      parameters:
+      - description: Product Reference ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update Product Request Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.UpdateProductRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - Bearer: []
+      summary: Update a product by ID
+      tags:
+      - Product Modules
+  /products/distance/ip/{city}:
+    get:
+      consumes:
+      - application/json
+      description: Computes the distance (in km) between the user's location (determined
+        via IP) and a specified city.
+      parameters:
+      - description: City name to compare distance with
+        in: path
+        name: city
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Returns the calculated distance in kilometers
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - Bearer: []
+      summary: Calculate the distance between an IP address and a city
+      tags:
+      - Product Modules
+  /products/export/{format}/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Exports product details in the specified format (currently supports
+        PDF).
+      parameters:
+      - description: Export format (e.g., 'pdf')
+        in: path
+        name: format
+        required: true
+        type: string
+      - description: Product ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: File generated successfully
+          schema:
+            $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.Response'
+      security:
+      - Bearer: []
+      summary: Export a single product
+      tags:
+      - Product Modules
+  /statistics/products-per-category:
+    get:
+      description: Retrieve statistics on the distribution of products per category
+        based on quantity
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.ProductCategoryStatsResponse'
+            type: array
+      security:
+      - Bearer: []
+      summary: Get percentage of products per category
+      tags:
+      - Statistics
+  /statistics/products-per-supplier:
+    get:
+      description: Retrieve statistics on the distribution of products per supplier
+        based on quantity
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.ProductSupplierStatsResponse'
+            type: array
+      security:
+      - Bearer: []
+      summary: Get percentage of products per supplier
+      tags:
+      - Statistics
+  /supplier:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a paginated list of suppliers with optional search and
+        sorting criteria.
+      parameters:
+      - description: Filter by supplier name
+        in: query
+        name: name
+        type: string
+      - default: name
+        description: Sort by field
+        enum:
+        - name
+        - id
+        example: '"name"'
+        in: query
+        name: sort_by
+        type: string
+      - default: desc
+        description: Sort order
+        enum:
+        - asc
+        - desc
+        example: '"asc"'
+        in: query
+        name: sort_order
+        type: string
+      - default: 1
+        description: Page number (must be >= 1)
+        example: 1
+        in: query
+        name: page
+        required: true
+        type: integer
+      - default: 20
+        description: Items per page (between 10-100)
+        example: 10
+        in: query
+        name: size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response with a list of suppliers
+          schema:
+            items:
+              $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.SearchSupplierResponse'
+            type: array
+      security:
+      - Bearer: []
+      summary: Get list of suppliers
+      tags:
+      - Supplier Modules
+    post:
+      consumes:
+      - application/json
+      description: Create a new supplier with the given details
+      parameters:
+      - description: Supplier creation request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.CreateSupplierRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Supplier created successfully
+          schema:
+            $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.Response'
+      security:
+      - Bearer: []
+      summary: Create a new supplier
+      tags:
+      - Supplier Modules
+  /supplier/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve detailed information about a supplier by its ID.
+      parameters:
+      - description: Supplier ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response
+          schema:
+            $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.GetSupplierDetailResponse'
+      security:
+      - Bearer: []
+      summary: Get supplier details
+      tags:
+      - Supplier Modules
+  /user:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.GetProfileResponse'
+      security:
+      - Bearer: []
+      summary: Get user information
+      tags:
+      - User Modules
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.UpdateProfileRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_quydmfl_niveau-test_api_v1.Response'
+      security:
+      - Bearer: []
+      summary: Modify user information
+      tags:
+      - User Modules
+securityDefinitions:
+  Bearer:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

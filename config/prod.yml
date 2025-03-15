@@ -1,0 +1,31 @@
+env: prod
+http:
+  host: 0.0.0.0
+  #  host: 127.0.0.1
+  port: 8000
+security:
+  api_sign:
+    app_key: 123456
+    app_security: 123456
+  jwt:
+    key: QQYnRFerJTSEcrfB89fw8prOaObmrch8
+data:
+  db:
+    user:
+      driver: postgres
+      dsn: host=3.1.28.125 user=postgres password=M1sIWvQ2D4MfWke7ReSt2IFHVPRXtpp6 dbname=backend_test port=5432 sslmode=disable TimeZone=UTC
+  redis:
+    addr: 127.0.0.1:6350
+    password: ""
+    db: 0
+    read_timeout: 0.2s
+    write_timeout: 0.2s
+
+log:
+  log_level: info
+  encoding: json # json or console
+  log_file_name: "./storage/logs/server.log"
+  max_backups: 30
+  max_age: 7
+  max_size: 1024
+  compress: true
