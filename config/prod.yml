@@ -13,7 +13,7 @@ data:
   db:
     user:
       driver: postgres
-      dsn: host=3.1.28.125 user=postgres password=M1sIWvQ2D4MfWke7ReSt2IFHVPRXtpp6 dbname=backend_test port=5432 sslmode=disable TimeZone=UTC
+      dsn: host=localhost user=niveau_usr password=niveau_pwd dbname=niveau_db port=5432 sslmode=disable TimeZone=UTC
   redis:
     addr: 127.0.0.1:6350
     password: ""
